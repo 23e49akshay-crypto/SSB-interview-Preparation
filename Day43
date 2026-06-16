@@ -1,0 +1,745 @@
+# 📘 Today’s Learning – Day 53 (GATE CSE 2027)
+
+**📅 Date:** 12 April 2026
+**📆 Day:** Sunday
+**📚 Subject:** Algorithms
+**🧠 Topic:** **Asymptotic Analysis, Time Complexity & Recurrence Relations**
+
+---
+
+# 1️⃣ Concept Teaching (Simple + GATE-Oriented)
+
+---
+
+# 🔹 What is Algorithm Analysis?
+
+Algorithm Analysis is the study of:
+
+✅ Running Time
+✅ Memory Usage
+✅ Scalability
+
+Purpose:
+
+To compare algorithms independent of hardware.
+
+---
+
+# 🔹 Why Complexity Matters?
+
+Suppose two algorithms solve the same problem.
+
+### Algorithm A
+
+[
+O(n)
+]
+
+### Algorithm B
+
+[
+O(n^2)
+]
+
+For:
+
+[
+n=100000
+]
+
+Algorithm A is dramatically faster.
+
+📌 GATE focuses on growth rate, not actual execution time.
+
+---
+
+# 🔹 Time Complexity
+
+Measures how running time grows with input size.
+
+Input size:
+
+[
+n
+]
+
+---
+
+### Example
+
+```c
+for(i=0;i<n;i++)
+{
+   printf("%d",i);
+}
+```
+
+Runs n times.
+
+Complexity:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Space Complexity
+
+Extra memory used by algorithm.
+
+Example:
+
+```c
+int arr[n];
+```
+
+Space:
+
+[
+O(n)
+]
+
+---
+
+# 🔹 Asymptotic Notations
+
+---
+
+# 1️⃣ Big-O Notation
+
+Upper Bound
+
+Represents worst-case growth.
+
+Example:
+
+[
+3n^2+2n+5
+]
+
+becomes:
+
+[
+O(n^2)
+]
+
+Reason:
+
+Highest-order term dominates.
+
+---
+
+# 2️⃣ Big-Ω (Omega)
+
+Lower Bound
+
+Represents best-case growth.
+
+Example:
+
+Linear Search:
+
+Best Case:
+
+[
+\Omega(1)
+]
+
+Element found at first position.
+
+---
+
+# 3️⃣ Big-Θ (Theta)
+
+Tight Bound
+
+When upper and lower bounds match.
+
+Example:
+
+[
+3n+5
+]
+
+[
+\Theta(n)
+]
+
+---
+
+📌 Very common GATE theory question.
+
+---
+
+# 🔹 Complexity Growth Order
+
+From fastest to slowest:
+
+[
+O(1)
+<
+O(\log n)
+<
+O(n)
+<
+O(n\log n)
+<
+O(n^2)
+<
+O(n^3)
+<
+O(2^n)
+<
+O(n!)
+]
+
+📌 Must memorize.
+
+---
+
+# 🔹 Common Time Complexities
+
+---
+
+### Constant
+
+```c
+x = a+b;
+```
+
+[
+O(1)
+]
+
+---
+
+### Logarithmic
+
+```c
+while(n>1)
+{
+   n=n/2;
+}
+```
+
+[
+O(\log n)
+]
+
+---
+
+### Linear
+
+```c
+for(i=0;i<n;i++)
+```
+
+[
+O(n)
+]
+
+---
+
+### Quadratic
+
+```c
+for(i=0;i<n;i++)
+   for(j=0;j<n;j++)
+```
+
+[
+O(n^2)
+]
+
+---
+
+### Cubic
+
+```c
+for(i)
+   for(j)
+      for(k)
+```
+
+[
+O(n^3)
+]
+
+---
+
+# 🔹 Recurrence Relations
+
+Used for recursive algorithms.
+
+---
+
+### Example 1
+
+```text
+T(n)=T(n−1)+1
+```
+
+Expansion:
+
+```text
+T(n)
+=T(n−2)+2
+=T(n−3)+3
+...
+```
+
+Result:
+
+[
+O(n)
+]
+
+---
+
+### Example 2
+
+Binary Search
+
+```text
+T(n)=T(n/2)+1
+```
+
+Result:
+
+[
+O(\log n)
+]
+
+---
+
+### Example 3
+
+Merge Sort
+
+```text
+T(n)=2T(n/2)+n
+```
+
+Result:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Master Theorem (VERY IMPORTANT)
+
+General form:
+
+[
+T(n)=aT(n/b)+f(n)
+]
+
+Where:
+
+* a = number of subproblems
+* b = size reduction factor
+
+---
+
+### Case 1
+
+If
+
+[
+f(n)=O(n^{\log_b a-\epsilon})
+]
+
+Then:
+
+[
+T(n)=\Theta(n^{\log_b a})
+]
+
+---
+
+### Case 2
+
+If
+
+[
+f(n)=\Theta(n^{\log_b a})
+]
+
+Then:
+
+[
+T(n)=\Theta(n^{\log_b a}\log n)
+]
+
+---
+
+### Case 3
+
+If
+
+[
+f(n)=\Omega(n^{\log_b a+\epsilon})
+]
+
+Then:
+
+[
+T(n)=\Theta(f(n))
+]
+
+---
+
+📌 GATE frequently asks direct Master Theorem questions.
+
+---
+
+# 🔹 Example Using Master Theorem
+
+Find:
+
+[
+T(n)=2T(n/2)+n
+]
+
+Here:
+
+[
+a=2,\ b=2
+]
+
+[
+n^{\log_2 2}=n
+]
+
+Case 2 applies.
+
+Answer:
+
+[
+O(n\log n)
+]
+
+---
+
+# 🔹 Common GATE Traps
+
+### Trap 1
+
+Ignore constants.
+
+[
+100n = O(n)
+]
+
+---
+
+### Trap 2
+
+Ignore lower-order terms.
+
+[
+n^2+n = O(n^2)
+]
+
+---
+
+### Trap 3
+
+Nested loops do NOT always mean (O(n^2)).
+
+Depends on loop bounds.
+
+---
+
+### Trap 4
+
+Binary Search is:
+
+[
+O(\log n)
+]
+
+not
+
+[
+O(n)
+]
+
+---
+
+# 2️⃣ Practice: 30 GATE-Level MCQs
+
+---
+
+### Q1.
+
+Big-O represents:
+**Answer:** Worst-case complexity
+**Explanation:** Upper bound.
+
+---
+
+### Q2.
+
+Big-Ω represents:
+**Answer:** Best-case complexity
+**Explanation:** Lower bound.
+
+---
+
+### Q3.
+
+Big-Θ represents:
+**Answer:** Tight bound
+**Explanation:** Exact asymptotic growth.
+
+---
+
+### Q4.
+
+Complexity of single assignment statement:
+**Answer:** O(1)
+**Explanation:** Constant time.
+
+---
+
+### Q5.
+
+Complexity of Binary Search:
+**Answer:** O(log n)
+**Explanation:** Search space halves each step.
+
+---
+
+### Q6.
+
+Complexity of Linear Search:
+**Answer:** O(n)
+**Explanation:** Sequential checking.
+
+---
+
+### Q7.
+
+Complexity of two nested loops from 1 to n:
+**Answer:** O(n²)
+**Explanation:** n × n operations.
+
+---
+
+### Q8.
+
+Fastest growth among these?
+A) O(n)
+B) O(log n)
+C) O(n²)
+D) O(nlogn)
+
+**Answer:** O(log n)
+**Explanation:** Smallest growth rate.
+
+---
+
+### Q9.
+
+Slowest growth among these?
+A) O(n)
+B) O(n²)
+C) O(2ⁿ)
+D) O(log n)
+
+**Answer:** O(2ⁿ)
+**Explanation:** Exponential growth.
+
+---
+
+### Q10.
+
+T(n)=T(n−1)+1 gives:
+**Answer:** O(n)
+**Explanation:** Linear expansion.
+
+---
+
+### Q11.
+
+T(n)=T(n/2)+1 gives:
+**Answer:** O(log n)
+**Explanation:** Halving recurrence.
+
+---
+
+### Q12.
+
+Merge Sort complexity:
+**Answer:** O(nlogn)
+**Explanation:** Divide and conquer.
+
+---
+
+### Q13.
+
+Master Theorem applies to:
+**Answer:** Divide-and-conquer recurrences
+**Explanation:** Standard form.
+
+---
+
+### Q14.
+
+Most PYQ-tested topic?
+**Answer:** Master Theorem
+**Explanation:** Frequently asked.
+
+---
+
+### Q15.
+
+Biggest GATE trap?
+**Answer:** Ignoring recurrence analysis
+**Explanation:** Important scoring area.
+
+---
+
+### Q16.
+
+O(100n) simplifies to:
+**Answer:** O(n)
+**Explanation:** Ignore constants.
+
+---
+
+### Q17.
+
+O(n²+n) simplifies to:
+**Answer:** O(n²)
+**Explanation:** Highest-order term dominates.
+
+---
+
+### Q18.
+
+Binary Search works on:
+**Answer:** Sorted array
+**Explanation:** Divide-and-conquer search.
+
+---
+
+### Q19.
+
+Space complexity measures:
+**Answer:** Extra memory used
+**Explanation:** Auxiliary storage.
+
+---
+
+### Q20.
+
+Time complexity measures:
+**Answer:** Growth of running time
+**Explanation:** Efficiency metric.
+
+---
+
+### Q21.
+
+Which grows faster?
+A) O(nlogn)
+B) O(n²)
+
+**Answer:** O(n²)
+**Explanation:** Polynomial growth dominates.
+
+---
+
+### Q22.
+
+Which grows fastest?
+A) O(n³)
+B) O(2ⁿ)
+
+**Answer:** O(2ⁿ)
+**Explanation:** Exponential growth.
+
+---
+
+### Q23.
+
+Recurrence of Binary Search:
+**Answer:** T(n)=T(n/2)+1
+**Explanation:** Half-size recursion.
+
+---
+
+### Q24.
+
+Recurrence of Merge Sort:
+**Answer:** 2T(n/2)+n
+**Explanation:** Two halves plus merge.
+
+---
+
+### Q25.
+
+a in Master Theorem denotes:
+**Answer:** Number of subproblems
+**Explanation:** Recursive calls.
+
+---
+
+### Q26.
+
+b in Master Theorem denotes:
+**Answer:** Input reduction factor
+**Explanation:** Problem size division.
+
+---
+
+### Q27.
+
+Θ(n) means:
+**Answer:** Tight linear bound
+**Explanation:** Exact asymptotic behavior.
+
+---
+
+### Q28.
+
+O(1) means:
+**Answer:** Constant time
+**Explanation:** Independent of input size.
+
+---
+
+### Q29.
+
+Algorithm analysis helps:
+**Answer:** Compare efficiencies
+**Explanation:** Performance evaluation.
+
+---
+
+### Q30.
+
+Foundation of algorithm design:
+**Answer:** Complexity analysis
+**Explanation:** Guides optimization.
+
+---
+
+## ✅ Progress Update
+
+### Completed Subjects
+
+✅ Engineering Mathematics
+✅ Digital Logic
+✅ Computer Organization & Architecture
+✅ Programming & Data Structures
+
+### Current Subject
+
+🔄 Algorithms
+
